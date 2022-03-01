@@ -5,8 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: cluster-ui
-
+    app: guestbook-ui
   ports:
   - protocol: TCP
     port: 80
