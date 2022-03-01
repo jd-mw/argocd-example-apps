@@ -3,18 +3,29 @@ kind: Service
 metadata:
   name: guestbook-ui
 spec:
+type: NodePort
   ports:
     - port: 80
-      targetPort: 80
+  nodePort: 30180
+  name: http
+    - port: 443
+  nodePort: 31443
+  name: https
   selector:
-    app: guestbook-ui
-  type: NodePort
-    selector:
-      app: guestbook-ui
-    ports:
-        # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-      - port: 80
-        targetPort: 80
-        # Optional field
-        # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-        nodePort: 30007
+    myapp: mynginxapp
+
+#   ports:
+#     - port: 80
+#       targetPort: 80
+#   selector:
+#     app: guestbook-ui
+#   type: NodePort
+#     selector:
+#       app: guestbook-ui
+#     ports:
+#         # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+#       - port: 80
+#         targetPort: 80
+#         # Optional field
+#         # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+#         nodePort: 30007
