@@ -14,4 +14,4 @@ spec:
     # targetPort - the container port to send requests to
     - nodePort: 30163
       port: 80
-      targetPort: 80
+      targetPort: 50000
