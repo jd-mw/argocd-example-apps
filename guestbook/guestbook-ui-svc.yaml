@@ -4,28 +4,14 @@ metadata:
   name: guestbook-ui
 spec:
   type: NodePort
-    ports:
-      - port: 80
-    nodePort: 30180
-    name: http
-      - port: 443
-    nodePort: 31443
-    name: https
-    selector:
-      myapp: mynginxapp
+  selector:
+    app: cluster-ui
 
-#   ports:
-#     - port: 80
-#       targetPort: 80
-#   selector:
-#     app: guestbook-ui
-#   type: NodePort
-#     selector:
-#       app: guestbook-ui
-#     ports:
-#         # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-#       - port: 80
-#         targetPort: 80
-#         # Optional field
-#         # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-#         nodePort: 30007
+  ports:
+    # Three types of ports for a service
+    # nodePort - a static port assigned on each the node
+    # port - port exposed internally in the cluster
+    # targetPort - the container port to send requests to
+    - nodePort: 30163
+      port: 80
+      targetPort: 80
